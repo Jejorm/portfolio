@@ -1,0 +1,144 @@
+---
+import AstroIcon from '../assets/icons/AstroIcon.astro'
+import Tailwind from '../assets/icons/Tailwind.astro'
+import GitHub from '../assets/icons/GitHub.astro'
+import Link from '../assets/icons/Link.astro'
+import LinkButton from './LinkButton.astro'
+import Preact from '../assets/icons/Preact.astro'
+import Solid from '../assets/icons/Solid.astro'
+import CsssIcon from '../assets/icons/CssIcon.astro'
+import React from '../assets/icons/React.astro'
+import Mistral from '../assets/icons/Mistral.astro'
+
+const TAGS = {
+  ASTRO: {
+    name: 'Astro',
+    class: 'bg-black text-[#ec682c]',
+    icon: AstroIcon,
+  },
+  TAILWIND: {
+    name: 'Tailwind',
+    class: 'bg-[#003159] text-white',
+    icon: Tailwind,
+  },
+  PREACT: {
+    name: 'Preact',
+    class: 'bg-[#613cb2] text-white',
+    icon: Preact,
+  },
+  SOLID: {
+    name: 'Solid-JS',
+    class: 'bg-[#3c4e68] text-white',
+    icon: Solid,
+  },
+  CSS: {
+    name: 'CSS',
+    class: 'bg-slate-100 text-[#5f3694]',
+    icon: CsssIcon,
+  },
+  REACT: {
+    name: 'React',
+    class: 'bg-slate-900 text-[#75c2d9]',
+    icon: React,
+  },
+  MISTRAL: {
+    name: 'Mistral AI',
+    class: 'bg-[#fefaec] text-[#0f0f0d]',
+    icon: Mistral,
+  },
+}
+
+const PROJECTS = [
+  {
+    title: 'AsoAfro | Professional cleaning company',
+    description:
+      'Website for AsoAfro, a house, office and gardening cleaning company, developed with Astro, Tailwind CSS, an image carousel and dark/light mode with Preact.',
+    link: 'https://asoafro.com',
+    gitHub: 'https://github.com/Jejorm/Asoafro',
+    image: '/projects/asoafroScreenshot.webp',
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.PREACT],
+  },
+  {
+    title: 'PokeList | Pokemon Resource',
+    description:
+      'A Pokémon website built with Astro, Tailwind CSS, and Solid.js, featuring a live list from PokeAPI with pagination and local-storage bookmarks.',
+    link: 'https://pokemon-list-astro.netlify.app',
+    gitHub: 'https://github.com/Jejorm/pokemon-astro',
+    image: '/projects/pokemonListsScreenshot.webp',
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.SOLID],
+  },
+  {
+    title: 'AssemblyEndgame | Word Guessing Game',
+    description:
+      'A word-guessing game built with React, where players challenge themselves to guess the hidden word within a limited number of attempts. Designed with accessibility in mind and a smooth user experience for everyone.',
+    link: 'https://assembly-endgam3.netlify.app',
+    gitHub: 'https://github.com/Jejorm/assembly-endgame',
+    image: '/projects/assemblyEndgameScreenshot.webp',
+    tags: [TAGS.REACT, TAGS.CSS],
+  },
+  {
+    title: 'ChefClaude | Create Incredible Recipes',
+    description:
+      'React-based web app that turns your ingredients into delicious, Claude AI-generated recipes. Just enter at least four ingredients and get a creative, recipe in seconds.',
+    link: 'https://mistral-recipes.netlify.app',
+    gitHub: 'https://github.com/Jejorm/chef-mistral',
+    image: '/projects/chefMistralScreenshot.webp',
+    tags: [TAGS.REACT, TAGS.MISTRAL],
+  },
+]
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image, gitHub, link }) => (
+    <article class='flex flex-col space-x-0 space-y-8 lg:flex-row lg:space-x-8 lg:space-y-0'>
+      <div class='lg:w-1/2'>
+        <div class='relative flex flex-col justify-center items-center col-span-6 row-span-5 transition duration-500 ease-in-out transform shadow-xl overflow-clip sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50'>
+          <img
+            alt={`${title}`}
+            class='object-cover w-full h-56 transition duration-500 sm:h-full md:scale-110 md:hover:scale-105'
+            src={image}
+            loading='lazy'
+          />
+        </div>
+      </div>
+
+      <div class='w-full lg:w-1/2 '>
+        <h3 class='mt-4 text-2xl md:text-3xl lg:text-2xl font-semibold text-gray-800  dark:text-emerald-200/90'>
+          {title}
+        </h3>
+        <div class='flex flex-wrap mt-8 '>
+          <ul class='flex flex-row flex-wrap mb-8 gap-x-6 gap-y-6 sm:gap-y-0'>
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex items-center gap-x-2 rounded-full py-2 px-4 sm:px-4 md:px-8 text-base sm:text-lg lg:text-sm lg:px-4 ${tag.class} `}
+                >
+                  <tag.icon class='size-6' />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div class='text-lg lg:text-lg md:text-xl text-gray-700 dark:text-slate-200/90'>
+            {description}
+          </div>
+          <footer class='flex mt-8 lg:mt-4 gap-x-4'>
+            {gitHub && (
+              <LinkButton href={gitHub}>
+                <GitHub class='size-6' />
+                <span class='text-lg'>Code</span>
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <Link class='size-6' />
+                <span class='text-lg'>Preview</span>
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </div>
+    </article>
+  ))
+}

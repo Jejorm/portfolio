@@ -1,0 +1,23 @@
+---
+const navLinks = [
+  { href: '#experience', title: 'Work Experience' },
+  { href: '#projects', title: 'Projects' },
+]
+---
+
+<header
+  class='flex justify-center items-center py-5 w-screen text-xl xl:w-[1120px] px-4 md:px-0 md:mx-auto'
+>
+  <nav class='flex flex-row gap-8 sm:gap-x-16 md:gap-x-12 opacity-80 pt-4'>
+    {
+      navLinks.map(({ href, title }) => (
+        <a
+          class='hover:underline hover:transition hover:text-sky-200 hover:duration-200 focus:scale-95'
+          href={href}
+        >
+          {title}
+        </a>
+      ))
+    }
+  </nav>
+</header>

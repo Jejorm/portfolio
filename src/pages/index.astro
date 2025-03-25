@@ -1,11 +1,93 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Badge from '../components/Badge.astro'
+import Layout from '../layouts/Layout.astro'
+import Linkedin from '../assets/icons/Linkedin.astro'
+import GitHub from '../assets/icons/GitHub.astro'
+import Mail from '../assets/icons/Mail.astro'
+import SocialPill from '../components/SocialPill.astro'
+import Experience from '../components/Experience.astro'
+import SectionContainer from '../components/SectionContainer.astro'
+import BriefCase from '../assets/icons/BriefCase.astro'
+import Code from '../assets/icons/Code.astro'
+import Projects from '../components/Projects.astro'
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title='Jeremy Orellana | Creative Programmer & Web Developer Portfolio'
+  description="Hi! I'm Jeremy Orellana, a creative web developer based in Ecuador. I specialize in building custom websites and web applications that are responsive, user-friendly, and uniquely designed for your brand or idea. Whether you need a stunning portfolio, an engaging business site, or a powerful web app, I turn ideas into smooth, functional, and eye-catching digital experiences. Let's build something great together!"
+>
+  <main class='pl-6'>
+    <SectionContainer class='py-18 sm:py-16'>
+      <img
+        src='https://img.freepik.com/vector-gratis/ilustracion-joven-sonriente_1308-174669.jpg'
+        alt='Jeremy profile photo'
+        class='rounded-full size-12 mb-6 md:mb-4'
+      />
+      <h1
+        class='text-white text-4xl lg:text-5xl font-bold flex gap-x-6 pb-6 lg:pb-10'
+      >
+        Hi! I'm Jeremy <a
+          href='https://linkedin.com'
+          target='_blank'
+          rel='noopener'
+          class='flex justify-center items-center'
+        >
+          <Badge>Open to work</Badge>
+        </a>
+      </h1>
+      <h2 class='pt-4 sm:pt-0 text-xl md:text-2xl text-wrap max-w-[700px]'>
+        <span class='text-sky-200 font-bold'>Web developer</span> based in Ecuador
+        🇪🇨. I love bringing ideas to life on the web. With a mix of different tools
+        and tech, I build <span class='text-emerald-200 font-bold'>
+          fun, smooth, and good-looking websites</span
+        > that actually work and feel great to use!
+      </h2>
+      <nav class='flex gap-4 flex-wrap mt-10'>
+        <SocialPill href='linkedin.com'>
+          <Linkedin class='size-5 sm:size-6' />
+          Linkedin
+        </SocialPill>
+        <SocialPill href='github.com'>
+          <GitHub class='size-5 sm:size-6' />
+          GitHub
+        </SocialPill>
+        <SocialPill href='mailto:jejorm8@gmail.com'>
+          <Mail class='size-5 sm:size-6' />
+          Contact
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+    <SectionContainer id='experience'>
+      <h2 class='text-4xl font-semibold mb-12 flex gap-x-3 items-center'>
+        <BriefCase class='size-12' />
+        Work Experience
+      </h2>
+      <Experience />
+    </SectionContainer>
+    <SectionContainer class='lg:mb-12 pt-16 md:pt-12 lg:pt-0' id='projects'>
+      <h2
+        class='text-4xl font-semibold mb-16 md:mb-12 flex gap-x-3 items-center'
+      >
+        <Code class='size-12' />
+        Projects
+      </h2>
+      <div class='flex flex-col gap-y-24'>
+        <Projects />
+      </div>
+    </SectionContainer>
+    <footer class='md:max-w-2xl lg:max-w-5xl mx-auto mb-12 md:mb-6 lg:mb-12'>
+      <span
+        class='text-base md:text-center text-zinc-800/90 dark:text-zinc-200/90'
+      >
+        © 2025 Jeremy Orellana <span class='text-sm'
+          >(Inspired by <a
+            class='cursor-pointer text-[#4397f7] hover:underline hover:text-[#2d6ef7]'
+            href='https://porfolio.dev/'
+          >
+            @Midudev</a
+          >)</span
+        >
+      </span>
+    </footer>
+  </main>
 </Layout>
