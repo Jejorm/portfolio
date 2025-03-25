@@ -21,20 +21,18 @@ const { title, description } = Astro.props
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class='relative overflow-x-hidden'>
-    <Header />
-    <slot />
+  <body
+    class='relative overflow-x-hidden bg-gradient-to-t from-[#0C0239] to-[#0A001A]'
+  >
+    <div class='gradient min-h-screen'>
+      <Header />
+      <slot />
+    </div>
   </body>
 
   <style>
     :root {
       color-scheme: light dark;
-    }
-    html,
-    body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
     }
 
     html {
@@ -43,10 +41,31 @@ const { title, description } = Astro.props
     }
 
     body {
+      margin: 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       overscroll-behavior: none;
+    }
+    .gradient {
+      background-image: linear-gradient(
+        180deg,
+        hsl(251deg 93% 12%) 0%,
+        hsl(252deg 89% 12%) 18%,
+        hsl(252deg 85% 11%) 30%,
+        hsl(253deg 80% 11%) 38%,
+        hsl(252deg 81% 11%) 43%,
+        hsl(251deg 84% 11%) 46%,
+        hsl(249deg 86% 10%) 49%,
+        hsl(245deg 83% 10%) 51%,
+        hsl(237deg 80% 10%) 53%,
+        hsl(230deg 90% 9%) 56%,
+        hsl(226deg 94% 8%) 61%,
+        hsl(237deg 75% 8%) 68%,
+        hsl(250deg 81% 7%) 80%,
+        hsl(263deg 100% 5%) 100%
+      );
     }
 
     @media (prefers-reduced-motion: reduce) {
